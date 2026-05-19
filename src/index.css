@@ -1,0 +1,75 @@
+@font-face {
+    font-family: "Uthmani"; /* Name you will use in React components */
+    src: url("./assets/fonts/KFGQPC\ Uthmanic\ Script\ HAFS\ Regular.otf") format("opentype"); /* Adjust path and format as necessary */
+}
+@import url("./xy-theme.css");
+
+:root {
+    --mantine-font-family: "Uthmani", serif;
+    --mantine-font-family-monospace: "Uthmani", monospace;
+    --mantine-font-family-headings: "Uthmani", serif;
+    --mantine-font-size-df: 2rem;
+}
+
+html,
+body {
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    /* Prevent zoom on mobile when tapping */
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.dndflow {
+    flex-direction: column;
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.dndflow aside {
+    padding: 15px 10px;
+    font-size: 12px;
+}
+
+.dndflow .dndnode {
+    height: 20px;
+    padding: 8px;
+    border: 1px solid #1a192b;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-family: "Uthmani", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    /* Prevent zoom or scroll when dragging nodes on mobile */
+    touch-action: none;
+    font-size: 12px;
+    text-wrap: nowrap;
+}
+
+.dndflow .dndnode:active {
+    cursor: grabbing;
+}
+
+.dndflow .dndnode.input {
+    border-color: #0041d0;
+}
+
+.dndflow .dndnode.output {
+    border-color: #ff0072;
+}
+
+.dndflow .reactflow-wrapper {
+    flex-grow: 1;
+    height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .dndflow {
+        flex-direction: row;
+    }
+}

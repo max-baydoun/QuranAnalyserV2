@@ -1,0 +1,55 @@
+[
+    {
+        "modalId": 1,
+        "modalHeading": "Verse View - عرض الآية",
+        "modalImages": [],
+        "modalText": [
+            "The Verse View displays the selected ayah in beautiful Uthmanic script, providing a clear foundation for your analysis.",
+            "Use the dropdown menus above to navigate between surahs and ayahs. Arrow buttons allow you to move sequentially through the Quran verse by verse."
+        ]
+    },
+    {
+        "modalId": 2,
+        "modalHeading": "Directed Acyclic Graph - الرسم البياني الموجه",
+        "modalImages": [],
+        "modalText": [
+            "Inspired by the Quranic Arabic Corpus, this interactive graph visualizes the grammatical relationships and dependencies between words in the verse.",
+            "Each word is represented as a node. Draw connections between words to show how they relate grammatically—which word modifies which, what is the subject of the verb, and so on.",
+            "Group related words using the sentence-level labels (جملة إسمية, جملة فعلية) by dragging them from the top menu. This helps you see the clause structure at a glance.",
+            "Analysis nodes automatically appear when you connect two words, allowing you to annotate the specific grammatical relationship. This visual approach makes complex Arabic syntax clearer and easier to understand."
+        ]
+    },
+    {
+        "modalId": 3,
+        "modalHeading": "I'raab View - الإعراب",
+        "modalImages": [],
+        "modalText": [
+            "Classical I'raab (إعراب) is the traditional method of Arabic grammatical analysis that has been practiced for over a millennium, preserving the precise understanding of the Quran's language.",
+            "This view honors that scholarly tradition by providing a space for word-by-word grammatical analysis in the classical style.",
+            "For each word, you can record its case ending (إعراب), grammatical role (موقع إعرابي), and any relevant notes following the methodology of classical Arab grammarians.",
+            "Whether you're a student learning I'raab or a scholar documenting your analysis, this view maintains the timeless approach that has safeguarded the Quran's linguistic precision across generations."
+        ]
+    },
+    {
+        "modalId": 4,
+        "modalHeading": "Morphology - الصرف",
+        "modalImages": [],
+        "modalText": [
+            "Ever wondered how Arabic words are constructed from their roots? The Morphology (Sarf) table breaks down each word's internal structure.",
+            "Fill in the morphological details for each word: its triliteral or quadriliteral root (الجذر), the morphological pattern or template (الوزن), the word type (الكلمة - noun, verb, particle), and its meaning (المعنى).",
+            "You can also add person, number, gender, tense, mood, and other morphological features depending on the word type.",
+            "Understanding sarf reveals how a single root can produce dozens of related words, each carrying nuances of meaning shaped by its pattern."
+        ]
+    },
+    {
+        "modalId": 5,
+        "modalHeading": "Rhetoric - البلاغة",
+        "modalImages": [],
+        "modalText": [
+            "The Quran is renowned as the pinnacle of Arabic eloquence. The Rhetoric (Balagha) view helps you explore the literary and rhetorical devices that make each verse powerful and memorable.",
+            "Identify and document devices such as metaphor (استعارة), simile (تشبيه), metonymy (مجاز), ellipsis (حذف), repetition (تكرار), and many others.",
+            "Analyze the verse's stylistic choices: word order, emphasis, sentence rhythm, and the deliberate selection of vocabulary for maximum impact.",
+            "This space is for reflecting on why the Quran chose this particular expression—what makes it uniquely effective, beautiful, or moving? Understanding balagha deepens your appreciation of the Quran's unmatched literary artistry."
+        ]
+    }
+]
