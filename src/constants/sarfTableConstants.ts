@@ -51,7 +51,7 @@ export const sharedColumns: MRT_ColumnDef<SarfAnalysis>[] = [
     },
     {
         accessorKey: "derivation",
-        header: "Jāmid/Mushtaq",
+        header: "J/M",
         editVariant: "select",
         mantineEditSelectProps: {
             data: [

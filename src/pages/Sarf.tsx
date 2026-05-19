@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type RefAttributes } from "react";
 import { MantineReactTable, MRT_EditActionButtons, useMantineReactTable, type MRT_ColumnFiltersState } from "mantine-react-table";
 import { quran } from "@/utils/quranData";
-import { Box, Divider, Flex, Stack, Tabs, TabsList, TabsTab, Title, useMantineColorScheme, useMantineTheme } from "@mantine/core";
+import { Box, Divider, Flex, Stack, Tabs, TabsList, TabsTab, TextInput, Title, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import type { QuranLocationProps } from "@/types/shared";
 import { getFontSize, getReactFlowColors } from "@/constants/theme";
 import PanelHeading from "@/components/PanelHeading";
@@ -76,6 +76,16 @@ export default function Sarf({ location }: QuranLocationProps) {
             },
         },
         mantineEditSelectProps: ({ cell, row }) => ({
+            styles: {
+                input: {
+                    textAlign: "center",
+                    fontSize: "1.5rem",
+                    width: "100%",
+                    height: "100%",
+                    paddingRight: 10,
+                    overflow: "clip",
+                },
+            },
             clearable: true,
             onChange: (value) => {
                 const rowIndex = parseInt(row.id);
@@ -89,7 +99,14 @@ export default function Sarf({ location }: QuranLocationProps) {
             },
         }),
         mantineEditTextInputProps: ({ cell, row }) => ({
-            style: { direction: "rtl", textAlign: "right" },
+            styles: {
+                input: {
+                    textAlign: "center",
+                    fontSize: "1.5rem",
+                    width: "100%",
+                    height: "100%",
+                },
+            },
             onChange: (event) => {
                 const newValue = event.currentTarget.value;
                 const rowIndex = row.index;
@@ -111,6 +128,19 @@ export default function Sarf({ location }: QuranLocationProps) {
                 direction: "rtl",
             },
         }),
+        mantineTableHeadCellProps: () => ({
+            // p: 50,
+            //         ta: "center",
+            //         fz: "1.5rem",
+            styles: {
+                th: {
+                    fontSize: "1.5rem",
+                    textAlign: "center",
+                    padding: 5,
+                    border: "1px solid black",
+                },
+            },
+        }),
         mantineCreateRowModalProps: {
             style: {
                 backgroundColor: "green",
@@ -122,46 +152,42 @@ export default function Sarf({ location }: QuranLocationProps) {
                 tableLayout: "fixed",
             },
         },
-        renderEditRowModalContent: ({ internalEditComponents, row, table }) => (
-            <Stack>
-                <Title order={1} ta={"right"}>
-                    صَرفُ الكَلَامِ
-                </Title>
+        // renderEditRowModalContent: ({ row, table }) => (
+        //     <Stack>
+        //         <Title order={1} ta={"right"}>
+        //             صَرفُ الكَلَامِ
+        //         </Title>
 
-                {/* Option 1: Use the built-in edit components (easiest) */}
-                {internalEditComponents}
+        //         {row.getAllCells().map((cell) => (
+        //             <TextInput key={cell.id} label={cell.column.columnDef.header} defaultValue={cell.getValue() as string} ff="Uthmani" fz="df" />
+        //         ))}
 
-                {/* Option 2: Custom render each cell */}
-                {/* {row.getAllCells().map((cell) => (
-                    <TextInput key={cell.id} label={cell.column.columnDef.header} defaultValue={cell.getValue() as string} ff="Uthmani" fz="df" />
-                ))} */}
-
-                <Flex justify="space-evenly">
-                    <MRT_EditActionButtons row={row} table={table} variant="text" />
-                </Flex>
-            </Stack>
-        ),
-        mantineEditRowModalProps: {
-            style: {
-                color: reactFlowColors.text,
-            },
-            styles: {
-                content: {
-                    backgroundColor: reactFlowColors.secondary,
-                    border: `1px solid ${reactFlowColors.divider[0]}`,
-                },
-                header: {
-                    backgroundColor: reactFlowColors.secondary[0],
-                },
-                body: {
-                    backgroundColor: reactFlowColors.secondary[0],
-                },
-            },
-        },
+        //         <Flex justify="space-evenly">
+        //             <MRT_EditActionButtons row={row} table={table} variant="text" />
+        //         </Flex>
+        //     </Stack>
+        // ),
+        // mantineEditRowModalProps: {
+        //     style: {
+        //         color: reactFlowColors.text,
+        //     },
+        //     styles: {
+        //         content: {
+        //             backgroundColor: reactFlowColors.secondary,
+        //             border: `1px solid ${reactFlowColors.divider[0]}`,
+        //         },
+        //         header: {
+        //             backgroundColor: reactFlowColors.secondary[0],
+        //         },
+        //         body: {
+        //             backgroundColor: reactFlowColors.secondary[0],
+        //         },
+        //     },
+        // },
     });
 
     return (
-        <Stack p={20} w={"100%"} style={{ overflow: "auto" }}>
+        <Stack p={20} w={"100%"} h={"100%"} style={{ overflow: "auto" }}>
             <PanelHeading title="صرف الأية" id={4} />
             <Divider />
             <Tabs
@@ -186,7 +212,7 @@ export default function Sarf({ location }: QuranLocationProps) {
                     </TabsTab>
                 </TabsList>
             </Tabs>
-            <Box h={"90vh"}>
+            <Box h={"100%"}>
                 <MantineReactTable table={table} />
             </Box>
         </Stack>

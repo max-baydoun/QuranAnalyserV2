@@ -21,7 +21,21 @@ An interactive Quran study workspace built with React, TypeScript, and Vite. Thi
 - `Comments` — rich text commentary editor for verse-level notes
 - `Settings` — UI and presentation controls
 
-## 🛠️ Tech Stack
+## � Screenshots
+
+### Nahw Analysis — Verse 1:1
+
+Dependency graph and traditional iʿrāb view for syntactic structure analysis:
+
+![Nahw Analysis](screenshots/nahw.png)
+
+### Sarf Analysis — Verse 1:1
+
+Morphological parsing table with editable morphology entries:
+
+![Sarf Analysis](screenshots/sarf.png)
+
+## �🛠️ Tech Stack
 
 - React 19
 - TypeScript
