@@ -7,15 +7,15 @@ import StarterKit from "@tiptap/starter-kit";
 import TextAlign from "@tiptap/extension-text-align";
 import Superscript from "@tiptap/extension-superscript";
 import SubScript from "@tiptap/extension-subscript";
-import { useState } from "react";
 import { Box } from "@mantine/core";
+import { useCommentsStore } from "@/stores/useCommentsStore";
 
 function Comments() {
-    const [comments, setComments] = useState<string>();
+    const { getComment, saveComment } = useCommentsStore.getState();
     const editor = useEditor({
         extensions: [StarterKit, Underline, Link, Superscript, SubScript, Highlight, TextAlign.configure({ types: ["heading", "paragraph"] })],
-        content: comments,
-        onUpdate: ({ editor }) => setComments(editor.getHTML()),
+        content: getComment(),
+        onUpdate: ({ editor }) => saveComment(editor.getHTML()),
     });
 
     return (

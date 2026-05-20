@@ -11,6 +11,8 @@ import { randomiseVerse } from "@/utils/quranData";
 import { useLocationStore } from "@/stores/useLocationStore";
 import { useNahwStore } from "@/stores/useNahwStore";
 import { useSarfStore } from "@/stores/useSarfStore";
+import { useBalaghaStore } from "@/stores/useBalaghaStore";
+import { useCommentsStore } from "@/stores/useCommentsStore";
 
 function App() {
     const setLocation = useLocationStore((s) => s.setLocation);
@@ -21,8 +23,8 @@ function App() {
     const saveAnalysis = () => {
         const nahwData = useNahwStore.getState().data;
         const sarfData = useSarfStore.getState().data;
-        const balaghaData = {};
-        const commentsData = {};
+        const balaghaData = useBalaghaStore.getState().data;
+        const commentsData = useCommentsStore.getState().data;
         const combinedData = {
             nahw: nahwData,
             sarf: sarfData,
