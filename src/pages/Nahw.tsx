@@ -12,8 +12,7 @@ import { getReactFlowColors } from "@/constants/theme";
 import { useLocationStore } from "@/stores/useLocationStore";
 
 function NahwPage() {
-    const surah = useLocationStore((s) => s.location.surah);
-    const ayah = useLocationStore((s) => s.location.ayah);
+    const { surah, ayah } = useLocationStore.getState().location;
     const verse = quran[surah - 1].verses[ayah - 1];
     const words = [...verse.words].reverse();
     const dagGraphPanelRef = usePanelRef();

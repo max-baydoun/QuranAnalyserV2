@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useState, type RefAttributes } from "react";
-import { MantineReactTable, MRT_EditActionButtons, useMantineReactTable, type MRT_ColumnFiltersState } from "mantine-react-table";
+import { MantineReactTable, useMantineReactTable, type MRT_ColumnFiltersState } from "mantine-react-table";
 import { quran } from "@/utils/quranData";
-import { Box, Divider, Flex, Stack, Tabs, TabsList, TabsTab, TextInput, Title, useMantineColorScheme, useMantineTheme } from "@mantine/core";
-import type { QuranLocationProps } from "@/types/shared";
+import { Box, Divider, Stack, Tabs, TabsList, TabsTab, useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import { getFontSize, getReactFlowColors } from "@/constants/theme";
 import PanelHeading from "@/components/PanelHeading";
 import { IconPencil, type IconProps } from "@tabler/icons-react";
@@ -10,9 +9,13 @@ import type { JSX } from "react/jsx-runtime";
 import { filColumns, harfColumns, ismColumns, makeBlankSarfRow, sharedColumns } from "@/constants/sarfTableConstants";
 import { type SarfView } from "@/types/sarf/sarfTypes";
 import { useSarfStore } from "@/stores/useSarfStore";
+import { useLocationStore } from "@/stores/useLocationStore";
 
-export default function Sarf({ location }: QuranLocationProps) {
-    const verse = quran[location.surah - 1].verses[location.ayah - 1];
+export default function Sarf() {
+    const location = useLocationStore.getState().location;
+    const { surah, ayah } = location;
+
+    const verse = quran[surah - 1].verses[ayah - 1];
     const [view, setView] = useState<SarfView>("all");
     const { getRows, saveRow, saveVerseAnalysis } = useSarfStore.getState();
     const storedRows = getRows();

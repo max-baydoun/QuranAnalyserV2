@@ -28,7 +28,7 @@ export default function PageNavigator() {
             <TabsPanel value="نحو">
                 <Nahw key={`${location.surah}-${location.ayah}`} />
             </TabsPanel>
-            <TabsPanel value="صرف">{<Sarf key={`${location.surah}-${location.ayah}`} location={location} />}</TabsPanel>
+            <TabsPanel value="صرف">{<Sarf key={`${location.surah}-${location.ayah}`} />}</TabsPanel>
             <TabsPanel value="Comments">
                 <Comments key={`${location.surah}-${location.ayah}`} />
             </TabsPanel>

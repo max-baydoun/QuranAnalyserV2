@@ -1,4 +1,3 @@
-import type { BalaghaState } from "@/pages/Balagha";
 import { ActionIcon, Group, Stack, Title } from "@mantine/core";
 import "@mantine/tiptap/styles.css";
 import { RichTextEditor, Link } from "@mantine/tiptap";
@@ -10,27 +9,19 @@ import TextAlign from "@tiptap/extension-text-align";
 import Superscript from "@tiptap/extension-superscript";
 import SubScript from "@tiptap/extension-subscript";
 import { IconX } from "@tabler/icons-react";
+import type { BalaghaState } from "@/types/balagha";
 
-export default function Entry({
-    entryData,
-    updateText,
-    deleteEntry,
-}: {
-    entryData: BalaghaState;
-    updateText: (id: number, newText: string) => void;
-    deleteEntry: (id: number) => void;
-}) {
-    const id = entryData.id;
+export default function Entry({ entryData, handleClick }: { entryData: BalaghaState; handleClick: (type: "save" | "delete", entry: BalaghaState) => void }) {
     const editor = useEditor({
         extensions: [StarterKit, Underline, Link, Superscript, SubScript, Highlight, TextAlign.configure({ types: ["heading", "paragraph"] })],
         content: entryData.text,
-        onUpdate: ({ editor }) => updateText(id, editor.getHTML()),
+        onUpdate: ({ editor }) => handleClick("save", { ...entryData, text: editor.getHTML() }),
     });
     return (
         <Stack ta={"right"}>
             <Group style={{ display: "flex", alignItems: "center" }} dir="rtl">
                 <Title>{entryData.device}</Title>
-                <ActionIcon c={"accent"} onClick={() => deleteEntry(id)}>
+                <ActionIcon c={"accent"} onClick={() => handleClick("delete", entryData)}>
                     <IconX />
                 </ActionIcon>
             </Group>
