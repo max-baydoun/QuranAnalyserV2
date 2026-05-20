@@ -4,11 +4,9 @@ import { type OnDropAction, useDnD } from "@/hooks/useDnD";
 import { Box, Text } from "@mantine/core";
 import { createGroupNode } from "@/utils/nodeFactory";
 import { useNahwStore } from "@/stores/useNahwStore";
-import { useLocationStore } from "@/stores/useLocationStore";
 
 export function SentenceMenu() {
     const saveNode = useNahwStore((s) => s.saveNode);
-    const location = useLocationStore((s) => s.location);
     const { onDragStart, setType } = useDnD();
     const { setNodes } = useReactFlow();
     const getId = () => `group-${id++}`;
@@ -19,7 +17,7 @@ export function SentenceMenu() {
             return ({ position }: { position: XYPosition }) => {
                 const newNode = createGroupNode(getId(), { label: nodeType === "ismi" ? "جملة إسمية" : "جملة فعلية" }, position);
                 setNodes((nds) => nds.concat(newNode));
-                saveNode(location, newNode);
+                saveNode(newNode);
                 setType(null);
             };
         },

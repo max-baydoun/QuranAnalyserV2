@@ -1,8 +1,8 @@
 import { useReactFlow } from "@xyflow/react";
 import { useEffect } from "react";
-import type { CustomNode } from "@/types/node";
+import type { GraphNode } from "@/types/node";
 
-export const ViewResetter = ({ nodes }: { nodes: CustomNode[] }) => {
+export const ViewResetter = ({ nodes }: { nodes: GraphNode[] }) => {
     const { fitView } = useReactFlow();
     useEffect(() => {
         fitView();

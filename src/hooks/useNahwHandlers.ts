@@ -69,7 +69,7 @@ export const useNahwHandlers = (nodes: GraphNode[], location: QuranLocation) => 
 
     const onReconnect = useCallback(
         (oldEdge: any, newConnection: Connection) => {
-            const nextEdges = reconnectEdge(oldEdge, newConnection, store.getEdges(location));
+            const nextEdges = reconnectEdge(oldEdge, newConnection, store.getEdges());
             nextEdges.forEach((edge) => store.saveEdge(edge));
         },
         [location, store.getEdges],
@@ -131,7 +131,7 @@ export const useNahwHandlers = (nodes: GraphNode[], location: QuranLocation) => 
             });
 
             // 3. Clean up store edges if nodes are gone
-            const remainingEdges = store.getEdges(location).filter((e) => !deleted.some((d) => d.id === e.source || d.id === e.target));
+            const remainingEdges = store.getEdges().filter((e) => !deleted.some((d) => d.id === e.source || d.id === e.target));
             remainingEdges.forEach((edge) => store.saveEdge(edge));
         },
         [nodes, location, store],
