@@ -10,15 +10,16 @@ import { filColumns, harfColumns, ismColumns, makeBlankSarfRow, sharedColumns } 
 import { type SarfView } from "@/types/sarf/sarfTypes";
 import { useSarfStore } from "@/stores/useSarfStore";
 import { useLocationStore } from "@/stores/useLocationStore";
+import { makeQuranicKey } from "@/stores/useNahwStore";
 
 export default function Sarf() {
-    const location = useLocationStore.getState().location;
+    const location = useLocationStore((s) => s.location);
     const { surah, ayah } = location;
 
     const verse = quran[surah - 1].verses[ayah - 1];
     const [view, setView] = useState<SarfView>("all");
-    const { getRows, saveRow, saveVerseAnalysis } = useSarfStore.getState();
-    const storedRows = getRows();
+    const { getRows, saveRow, saveVerseAnalysis } = useSarfStore();
+    const storedRows = useSarfStore((state) => state.data[makeQuranicKey(location)] ?? []);
 
     const theme = useMantineTheme();
     const { colorScheme } = useMantineColorScheme();
@@ -27,14 +28,14 @@ export default function Sarf() {
     useEffect(() => {
         if (storedRows.length === 0) {
             saveVerseAnalysis(
-                verse.words.flatMap((word, i) => {
-                    return word.segments.map((_, j) => {
+                verse.words.flatMap((word: any, i: number) => {
+                    return word.segments.map((_: any, j: number) => {
                         return makeBlankSarfRow(1 + i, 1 + j, word);
                     });
                 }),
             );
         }
-    }, [location]);
+    }, [location, storedRows.length, saveVerseAnalysis, verse]);
 
     const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>([]);
     const columns = useMemo(() => {

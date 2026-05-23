@@ -8,15 +8,28 @@ import TextAlign from "@tiptap/extension-text-align";
 import Superscript from "@tiptap/extension-superscript";
 import SubScript from "@tiptap/extension-subscript";
 import { Box } from "@mantine/core";
+import { useEffect } from "react";
 import { useCommentsStore } from "@/stores/useCommentsStore";
+import { useLocationStore } from "@/stores/useLocationStore";
+import { makeQuranicKey } from "@/stores/useNahwStore";
 
 function Comments() {
-    const { getComment, saveComment } = useCommentsStore.getState();
+    const location = useLocationStore((s) => s.location);
+    const comment = useCommentsStore((state) => state.data[makeQuranicKey(location)] ?? "");
+    const saveComment = useCommentsStore((state) => state.saveComment);
     const editor = useEditor({
         extensions: [StarterKit, Underline, Link, Superscript, SubScript, Highlight, TextAlign.configure({ types: ["heading", "paragraph"] })],
-        content: getComment(),
+        content: comment,
         onUpdate: ({ editor }) => saveComment(editor.getHTML()),
     });
+
+    useEffect(() => {
+        if (!editor) return;
+        const currentHtml = editor.getHTML();
+        if (currentHtml !== comment) {
+            editor.commands.setContent(comment);
+        }
+    }, [comment, editor]);
 
     return (
         <Box p={10}>
