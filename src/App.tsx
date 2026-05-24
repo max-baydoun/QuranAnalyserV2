@@ -1,4 +1,4 @@
-import { ActionIcon, AppShell, AppShellHeader, Avatar, AppShellMain, AppShellAside, Affix, FileInput, FileButton } from "@mantine/core";
+import { ActionIcon, AppShell, AppShellHeader, Avatar, AppShellMain, AppShellAside, Affix, FileButton } from "@mantine/core";
 import "@mantine/core/styles.css";
 import Verse from "./components/Verse";
 import { DesktopQuranNavigator } from "./components/QuranNavigator";
@@ -13,8 +13,8 @@ import { useNahwStore } from "@/stores/useNahwStore";
 import { useSarfStore } from "@/stores/useSarfStore";
 import { useBalaghaStore } from "@/stores/useBalaghaStore";
 import { useCommentsStore } from "@/stores/useCommentsStore";
-import { z } from "zod";
 import { IconDownload } from "@tabler/icons-react";
+import { z } from "zod";
 import { IconUpload } from "@tabler/icons-react";
 
 function App() {

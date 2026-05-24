@@ -227,7 +227,7 @@ export const useNahwStore = create<NahwStore>((set, get) => ({
                     ...state.data,
                     [key]: {
                         ...existing,
-                        nodes: [],
+                        nodes: existing.nodes.filter((node) => node.type === "ayahNode"),
                         edges: [],
                     },
                 },
